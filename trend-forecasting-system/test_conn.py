@@ -1,19 +1,35 @@
+################################################################
+# Module    :   Check database connection  
+# Author    :   Eric S. Viacrusis 
+# Date      :   March 16, 2026
+#
+# UPDATES   
+# March 20, 2026 - using .env file for database credentials
+################################################################
+
+import os
+from dotenv import load_dotenv
 import psycopg2
 
-#ENDPOINT = "tfashion-agents-db.cub6mk4och1j.us-east-1.rds.amazonaws.com"
-#DBNAME = "tfashion-agents-db"
-#USER = "postgres_admin"
-#PWD = "passww0rd"
+#Load environment variables from .env file
+load_dotenv()
 
 print("Starting connection test...")
+print("DB_HOST =", os.getenv("DB_HOST"))
+print("DB_NAME =", os.getenv("DB_NAME"))
+print("DB_USER =", os.getenv("DB_USER"))
+print("DB_PORT =", os.getenv("DB_PORT"))
+print("DB_PASSWORD =", os.getenv("DB_PASSWORD"))
+
 
 try:
     conn = psycopg2.connect(
-        host="tfashion-agents-db.cub6mk4och1j.us-east-1.rds.amazonaws.com",
-        database="postgres",
-        user="postgres_admin",
-        password="passw0rd",
-        port=5432
+        host=os.getenv("DB_HOST"),
+        database=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        port=os.getenv("DB_PORT"),
+        sslmode="require"
     )
     print("Connected successfully!")
     conn.close()
