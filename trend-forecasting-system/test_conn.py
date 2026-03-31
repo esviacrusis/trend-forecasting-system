@@ -4,9 +4,11 @@
 # Date      :   March 16, 2026
 #
 # UPDATES   
-# March 20, 2026 - using .env file for database credentials
+# March 20: using .env file for database credentials
+# March 27: create sql query to test connection and display data from database
 ################################################################
 
+import pandas as pd
 import os
 from dotenv import load_dotenv
 import psycopg2
@@ -32,8 +34,27 @@ try:
         sslmode="require"
     )
     print("Connected successfully!")
+    
+    # Create a SQL query (table names) to test the connection and display data from the database
+    query = """
+    SELECT table_name
+    FROM information_schema.tables
+    WHERE table_schema = 'public'
+    """
+    df = pd.read_sql(query, conn)
+    
     conn.close()
     print("Connection closed.")
+
+    # Print the retrieved table names to verify the connection and data retrieval
+    print(df)
+
+
 except Exception as e:
     print("Connection failed:")
     print(e)
+
+finally:
+    if conn is not None:
+        conn.close()
+        print("Connection closed.")
