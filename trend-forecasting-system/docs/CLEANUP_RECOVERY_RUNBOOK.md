@@ -11,9 +11,16 @@ Guiding rule: **audit first, approve second, modify third, validate last**.
 - [x] Phase 3: Clean recovery branch created as cleanup/project-structure-resumed.
 - [x] Phase 4: Approved source, database, and documentation assets imported.
 - [x] Phase 6: Ignore rules and placeholder environment template added.
-- [ ] Phase 5: Final structural organization and code review.
+- [x] Phase 5: Final structural organization and code review.
 - [x] Phase 8: Safe validation completed on 2026-09-23; database/network tests pending.
-- [ ] Phase 9: Final review and commits.
+- [x] Phase 9: Final review and commits completed in commits 649ebac and 9510c43.
+
+Adoption status:
+
+- Permanent working copy: /Users/eric/Documents/CSUEB Subjects/2026 Spring/BAN 693 Capstone/Codes/trend-forecasting-system-final
+- Safe dependency, compilation, configuration, and UI import checks passed.
+- Database, API, scraping, and production-data tests are explicitly deferred.
+- The original project remains preserved as a fallback.
 
 Current working copy:
 
