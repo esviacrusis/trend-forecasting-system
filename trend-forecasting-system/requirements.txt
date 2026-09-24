@@ -1,0 +1,14 @@
+boto3
+opencv-python
+Pillow
+matplotlib
+numpy
+openai
+pandas
+playwright
+plotly
+psycopg2-binary
+python-dotenv
+scikit-learn
+SQLAlchemy
+streamlit

@@ -237,7 +237,16 @@ colors.csv
 #### START 001: August 7, 2026 : Added as per chatGPT instructions ###
 
 # Environment / secrets
+.env
 .env copy
 .env.*
+!.env.example
+
+# Python caches and compiled files
+__pycache__/
+*.py[cod]
+
+# Local/generated exports
+exports/
 
 #### END 001 ####
