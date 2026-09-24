@@ -12,7 +12,7 @@ Guiding rule: **audit first, approve second, modify third, validate last**.
 - [x] Phase 4: Approved source, database, and documentation assets imported.
 - [x] Phase 6: Ignore rules and placeholder environment template added.
 - [ ] Phase 5: Final structural organization and code review.
-- [ ] Phase 8: Full validation.
+- [x] Phase 8: Safe validation completed on 2026-09-23; database/network tests pending.
 - [ ] Phase 9: Final review and commits.
 
 Current working copy:
@@ -20,6 +20,15 @@ Current working copy:
 ~~~text
 /private/tmp/trend-forecasting-system-recovery
 ~~~
+
+Validation completed:
+
+- requirements installed successfully in an isolated Python 3.9 environment;
+- pip dependency check passed;
+- all 14 declared third-party modules imported successfully;
+- Python compilation passed with a redirected cache location;
+- configuration module imported successfully;
+- database, scraping, API, and production-data operations were not run.
 
 ## 0. Important paths and branches
 
