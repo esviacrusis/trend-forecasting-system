@@ -5,43 +5,96 @@
 #
 # UPDATES   
 # March 27, 2026 - create streamlit app to display data from database
+# April 3, 2026 - create run tracker to generate unique run ID for each execution of the script
 ###############################################################################
 
-from db import get_connection
-import streamlit as st
 
-try:
+import psycopg2
 
-    conn = None 
-
-    # Header 
-    st.title("The Fashion Agents")
-    st.write("Trend Forecasting System for the Fashion Industry")
+from ingestion_vogue import ingest
+from cv_pipeline import run_cv
 
 
-    if st.button("Start Ingestion"):
-        st.write("Run the script to get data from Vogue Runway, Instagram, Twitter and store it in the database.")
+from run_tracker import start_run, end_run
+from config import Config
 
-    if st.button("Run CV Processing"):
-        st.write("Run the computer vision processing script.")
+# from cv import run_cv
+# from nlp import run_nlp
+# from features import run_features
+# from train import run_training
+# from predict import run_prediction
+# from insights import run_insights
+# from moodboards import run_moodboards
 
-    if st.button("Build Features"):
-        st.write("Build features for the machine learning model.")
 
-    if st.button("Train Model"):
-        st.write("Train the machine learning model.")
 
-    if st.button("Generate Predictions"):
-        st.write("Generate predictions based on the trained model.")
 
-    if st.button("Create Mood Boards"):
-        st.write("Create mood boards for the fashion trends.")
+def main():
+    run_id = start_run("full_pipeline")
+    config = Config.from_env()
 
-except Exception as e:
-    st.write("Connection failed:")
-    st.write(e)
 
-finally:
-    if conn is not None:
-        conn.close()
-        print("Connection closed.")
+    try:
+
+        # conn = psycopg2.connect(
+        #     host="localhost",
+        #     dbname="your_db",
+        #     user="your_user",
+        #     password="your_password"
+        # )
+
+        # cursor = conn.cursor()
+
+
+        # 🔹 Start run
+        #config = {"source": "vogue"}
+        #run_id = start_run(cursor, "vogue_ingest", config, "Initial ingestion")
+
+
+
+        # 🔹 Your ingestion logic
+        #ingest(cursor, run_id)
+
+
+        # originally was:
+
+
+
+        #------------------ Ingestion -----------------------------------
+        #ingest(run_id, config)
+
+
+        #------------------ Computer Vision Processing ------------------
+
+        # Data input Sample
+        # Spring Selling 2023 - Fashion Show Sep to Oct 2022
+        # Brand : Chanel
+
+
+         #run_cv(run_id)
+        #run_cv(run_id, config)
+        run_cv(run_id, config)
+
+        # run_nlp(run_id)
+        # run_features(run_id)
+        # run_training(run_id)
+        # run_prediction(run_id)
+        # run_insights(run_id)
+        # run_moodboards(run_id)
+
+        # 🔹 End run
+        #end_run(cursor, run_id)
+
+        #conn.commit()
+
+
+
+
+
+
+    finally:
+        end_run(run_id)
+
+
+if __name__ == "__main__":
+    main()

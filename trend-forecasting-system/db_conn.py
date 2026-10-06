@@ -4,21 +4,21 @@
 # Date      :   March 16, 2026 
 ##################################################
 
-import boto3
 import psycopg2
 
+from config import Config
 
 
-ENDPOINT = "tfashion-agents-db.cub6mk4och1j.us-east-1.rds.amazonaws.com"
-DBNAME = "tfashion-agents-db"
-USER = "postgres_admin"
-PWD = "passww0rd"
+config = Config.from_env()
 
-ConnectionString = f"host='{ENDPOINT}' port='5432' dbname='{DBNAME}' user='{USER}' password='{PWD}' "
+conn = psycopg2.connect(
+    host=config.db_host,
+    dbname=config.db_name,
+    user=config.db_user,
+    password=config.db_password,
+    port=config.db_port,
+)
 
-print(ConnectionString)
-
-conn = psycopg2.connect(ConnectionString)
 conn.autocommit = True 
 cursor = conn.cursor()
 create_db = """CREATE database orders_db"""
@@ -46,5 +46,4 @@ cursor.execute(delete_db)
 conn.close()
 
  
-
 

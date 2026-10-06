@@ -205,3 +205,48 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ==================================================
+# Capstone project-specific ignores
+# ==================================================
+
+# macOS
+.DS_Store
+
+# VS Code local settings
+.vscode/
+
+# Local state / session files
+state.json
+
+# Generated model output
+model_plots/
+
+# Temporary Office files
+~$*.docx
+~$*.xlsx
+
+# Backup / scratch Python files
+backup_*.py
+
+# Local/generated data
+voguerunway_posts.json
+colors.csv
+
+
+#### START 001: August 7, 2026 : Added as per chatGPT instructions ###
+
+# Environment / secrets
+.env
+.env copy
+.env.*
+!.env.example
+
+# Python caches and compiled files
+__pycache__/
+*.py[cod]
+
+# Local/generated exports
+exports/
+
+#### END 001 ####
